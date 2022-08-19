@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@500&family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+$greenColor: #f2aa4cff;
+$blackColor: #000;
+$grayColor: #808080;
+$whiteColor: #fff;
+$poppinsFont: 'Poppins', sans-serif;
+$dynaFont: 'DynaPuff', cursive;
+
+body {
+  margin: 0;
+  font-family: $dynaFont !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $blackColor !important;
+  color: $whiteColor !important;
+}
+
+.home-container{
+  height: 93vh;
+  justify-content: center;
+  align-items: center;
+}
+.nav-link.active, .brand-title {
+  font-weight: bold !important;
+  color: $greenColor !important;
+}
+
+.dyna-font{
+  font-family: $dynaFont;
+}
+
+.nav-link{
+  color: $whiteColor !important;
+}
+
+.heading{
+  font-size: 3.5rem;
+}
+.paragraph{
+  font-size: 1.5rem;
+}
+
+.btn-custom{
+  background-color: $greenColor !important;
+  border: 1px solid $whiteColor !important;
+  font-weight: bold !important;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-custom:hover{
+  background: none !important;
+}
