@@ -1,17 +1,19 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
     Navbar, NavbarBrand, NavbarToggler,
     Collapse, Nav, NavItem, Container, Button
 } from 'reactstrap';
-import { useEffect } from 'react';
+
+import { MarketPlaceContext } from '../contexts';
 
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [walletConnected, setWalletConnected] = useState(false);
-    const [account, setAccount] = useState(null);
     const toggle = () => setIsOpen(!isOpen);
+
+    const { walletConnected, setWalletConnected,
+            account, setAccount } = useContext(MarketPlaceContext);
 
     const connectWallet = async () => {
         if(typeof window.ethereum !== 'undefined'){
@@ -28,10 +30,11 @@ const NavBar = () => {
         if(accounts.length > 0){
             setAccount(accounts[0])
         }else{
+            setAccount('')
             setWalletConnected(false)
         }
     })
-    
+
     return (
         <Container>
             <Navbar expand={'md'} dark>
@@ -55,7 +58,7 @@ const NavBar = () => {
                         <NavItem>
                             {walletConnected ?
                              <NavLink to='/myassets' className="nav-link">
-                                {account && account.replace(account.substring(6, 36), "-XXX-")}
+                                <i className="fa-brands fa-ethereum"></i> {account && account.replace(account.substring(6, 36), "-XXX-")}
                              </NavLink>
                              : <Button className="ms-3 btn-custom px-4" onClick={connectWallet}>Connect</Button>
                             }

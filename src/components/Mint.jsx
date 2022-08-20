@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
+import { MarketPlaceContext } from "../contexts";
 import NFTCard from "./NFTCard";
 
 const Mint = () => {
+    const { account } = useContext(MarketPlaceContext)
     const [nftData, setNftdata] = useState({
         title: '',
         desc: '',
@@ -34,6 +36,7 @@ const Mint = () => {
             [e.target.name]: e.target.value
         })
     }
+
     return (
         <Row xs='1' sm='1' md='1' lg='2' style={{
             height: '75vh',
@@ -94,10 +97,9 @@ const Mint = () => {
                         </Col>
                     </Row>
                     <FormGroup className="mt-3">
-                        <Label>Minter : 0xbcwiywsihiwochueuwyv</Label>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>On <i className="fa-brands fa-ethereum mx-2 mt-1"></i> Chain</Label>
+                        <Label className="text-muted">On <i className="fa-brands fa-ethereum mx-2 mt-1"></i> Chain</Label> <br />
+                        <Label className="text-muted">Minter : {account}</Label> <br />
+                        <Label>Minting fee : <i className="fa-brands fa-ethereum mx-1"></i> 0.02 ETH</Label>
                     </FormGroup>
                 </Form>
             </Col>

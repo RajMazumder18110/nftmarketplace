@@ -10,7 +10,7 @@ const Marketplace = () => {
             <Row xs='1' sm='1' md='2' lg='3' xl='3' xxl='4' style={{ cursor: 'pointer' }}>
                 {nftDataMarketplace.map((nftData, key) => (
                     <Col className="mt-4" key={key}>
-                        <NFTCard nftData={nftData}/>
+                        <NFTCard nftData={nftData} />
                     </Col>
                 ))}
             </Row>

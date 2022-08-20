@@ -1,11 +1,16 @@
 import { useNavigate } from 'react-router-dom'
 import { Card, CardBody, CardSubtitle, CardText, CardTitle, Button } from "reactstrap";
+import { MarketPlaceContext } from '../contexts'
+import { useContext } from "react";
 
-const NFTCard = ({ inAssets, active, mint, nftData }) => {
+const NFTCard = ({ marketplace, inAssets, active, mint, nftData, formValidated }) => {
+    const { setMyAssetActive } = useContext(MarketPlaceContext);
+
     const navigate = useNavigate()
     const mintNft = () => {
         console.log(nftData)
         alert(`minted ${nftData.title}`)
+        setMyAssetActive('owned')
     }
 
     const buyNft = () => {
@@ -45,7 +50,7 @@ return (
                   : mint ? <Button className="ms-3 mt-3 px-5 py-2 btn-custom"
                              onClick={mintNft}
                             >Mint</Button>
-                  : <Button className="ms-3 mt-3 px-5 py-2 btn-custom"
+                  :  <Button className="ms-3 mt-3 px-5 py-2 btn-custom"
                     onClick={buyNft}
                     >Buy</Button>
                 }
