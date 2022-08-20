@@ -1,7 +1,7 @@
 import { Card, CardBody, CardSubtitle, CardTitle, Col, Container, Row } from "reactstrap";
 import { Link } from 'react-router-dom'
 
-import NFTImg from '../assets/nft3.jpg'
+import NFTImg from '../assets/images/nft3.jpg'
 
 const Home = () => {
     return (
@@ -26,7 +26,7 @@ const Home = () => {
                             }}/>
                         <CardBody>
                             <CardTitle tag="h4" className="dyna-font">SuperNFT #3627</CardTitle>
-                            <CardSubtitle className="mb-2 text-muted dyna-font" tag="p">By Rajmazumder</CardSubtitle>
+                            <CardSubtitle className="mb-2 text-muted dyna-font" tag="p">An Awesome Landscape</CardSubtitle>
                         </CardBody>
                     </Card>
                 </Col>

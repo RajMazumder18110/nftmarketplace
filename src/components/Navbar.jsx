@@ -2,13 +2,39 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
     Navbar, NavbarBrand, NavbarToggler,
-    Collapse, Nav, NavItem, Container
+    Collapse, Nav, NavItem, Container, Button
 } from 'reactstrap';
+import { useEffect } from 'react';
 
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [walletConnected, setWalletConnected] = useState(false);
+    const [account, setAccount] = useState(null);
     const toggle = () => setIsOpen(!isOpen);
+
+    const connectWallet = async () => {
+        if(typeof window.ethereum !== 'undefined'){
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts'})
+            setAccount(accounts[0]);
+            setWalletConnected(true);
+        }
+        else{
+            alert('Please install metamask :(')
+        }
+    }
+
+    window.ethereum.on('accountsChanged', accounts => {
+        if(accounts.length > 0){
+            setAccount(accounts[0])
+        }else{
+            setWalletConnected(false)
+        }
+    })
+   
+    useEffect(() => {
+        
+    }, [])
 
     return (
         <Container>
@@ -31,7 +57,12 @@ const NavBar = () => {
                             <NavLink to='/myassets' className="nav-link">My Assets</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to='/contact' className="nav-link">Contact</NavLink>
+                            {walletConnected ?
+                             <NavLink to='/myassets' className="nav-link">
+                                {account && account.replace(account.substring(6, 36), "-XXX-")}
+                             </NavLink>
+                             : <Button className="ms-3 btn-custom px-4" onClick={connectWallet}>Connect</Button>
+                            }
                         </NavItem>
                     </Nav>
                 </Collapse>

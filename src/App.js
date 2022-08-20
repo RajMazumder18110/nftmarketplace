@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Marketplace from './pages/Marketplace'
 import Profile from './pages/Profile'
-import Contact from './pages/Contact'
 
 const App = () => {
   return (
@@ -13,7 +12,6 @@ const App = () => {
         <Route exact path='/' element={ <Home/> }/>
         <Route exact path='/explore' element={ <Marketplace/> }/>
         <Route exact path='/myassets' element={ <Profile/> }/>
-        <Route exact path='/contact' element={ <Contact/> }/>
         <Route path='/' element={ <Home/> }/>
       </Routes>
     </Router>

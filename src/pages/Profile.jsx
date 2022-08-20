@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { Container, Row, Col } from "reactstrap";
+import Mint from '../components/Mint';
 import NFTCard from "../components/NFTCard";
+
+import { nftDataListed, nftDataOwned } from '../assets/data'
 
 const Profile = () => {
     const [active, setActive] = useState('owned');
@@ -23,35 +26,19 @@ const Profile = () => {
             </div>
             {active ==='owned' ?
                 <Row xs='1' sm='1' md='2' lg='3' xl='3' xxl='4'>
-                    <Col className="mt-4">
-                        <NFTCard/>
-                    </Col>
-                    <Col className="mt-4">
-                        <NFTCard/>
-                    </Col>
-                    <Col className="mt-4">
-                        <NFTCard/>
-                    </Col>
-                    <Col className="mt-4">
-                        <NFTCard/>
-                    </Col>
+                    {nftDataOwned.map((nftData, key) => (
+                        <Col className="mt-4" key={key}>
+                            <NFTCard inAssets active={active} nftData={nftData}/>
+                        </Col>
+                    ))}
                 </Row> : active ==='listed' ?
                 <Row xs='1' sm='1' md='2' lg='3' xl='3' xxl='4'>
-                    <Col className="mt-4">
-                        <NFTCard/>
-                    </Col>
-                    <Col className="mt-4">
-                        <NFTCard/>
-                    </Col>
-                    <Col className="mt-4">
-                        <NFTCard/>
-                    </Col>
-                    <Col className="mt-4">
-                        <NFTCard/>
-                    </Col>
-                </Row> :
-                <h1>Minting</h1>
-
+                    {nftDataListed.map((nftData, key) => (
+                        <Col className="mt-4" key={key}>
+                            <NFTCard inAssets active={active} nftData={nftData}/>
+                        </Col>
+                    ))}
+                </Row> : <Mint />
             }
         </Container>
     )
