@@ -45,7 +45,7 @@ const NavBar = () => {
         <Container>
             <Navbar expand={'md'} dark>
                 <NavbarBrand>
-                    <NavLink to="/" className="nav-link">
+                    <NavLink to="/nftmarketplace/" className="nav-link">
                         <h5 className='brand-title dyna-font'>NFT Market</h5>
                     </NavLink>
                 </NavbarBrand>
@@ -53,17 +53,17 @@ const NavBar = () => {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className='ms-auto' navbar>
                         <NavItem>
-                            <NavLink to='/' className="nav-link">Home</NavLink>
+                            <NavLink to='/nftmarketplace/' className="nav-link">Home</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to='/explore' className="nav-link">Explore</NavLink>
+                            <NavLink to='/nftmarketplace/explore' className="nav-link">Explore</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink to='/myassets' className="nav-link">My Assets</NavLink>
+                            <NavLink to='/nftmarketplace/myassets' className="nav-link">My Assets</NavLink>
                         </NavItem>
                         <NavItem>
                             {walletConnected ?
-                             <NavLink to='/myassets' className="nav-link">
+                             <NavLink to='/nftmarketplace/myassets' className="nav-link">
                                 <i className="fa-brands fa-ethereum"></i> {account && account.replace(account.substring(6, 36), "-XXX-")}
                              </NavLink>
                              : <Button className="ms-3 btn-custom px-4" onClick={connectWallet}>Connect</Button>

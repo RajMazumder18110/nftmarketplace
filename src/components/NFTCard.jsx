@@ -15,7 +15,7 @@ const NFTCard = ({ inAssets, active, mint, nftData }) => {
 
     const buyNft = () => {
         alert('nft bought')
-        navigate('/myassets')
+        navigate('/nftmarketplace/myassets')
     }
 
     const listNft = () => {
