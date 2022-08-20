@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@openzeppelin/contracts": "^4.7.3",
     "gh-pages": "^4.0.0"
   }
 }
