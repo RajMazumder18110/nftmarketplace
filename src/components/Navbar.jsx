@@ -32,14 +32,16 @@ const NavBar = () => {
         }
     }
 
-    window.ethereum.on('accountsChanged', accounts => {
-        if(accounts.length > 0){
-            setAccount(accounts[0])
-        }else{
-            setAccount('')
-            setWalletConnected(false)
-        }
-    })
+    if(window.ethereum){
+        window.ethereum.on('accountsChanged', accounts => {
+            if(accounts.length > 0){
+                setAccount(accounts[0])
+            }else{
+                setAccount('')
+                setWalletConnected(false)
+            }
+        })
+    }
 
     return (
         <Container>

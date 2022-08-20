@@ -10,8 +10,8 @@ const Home = () => {
                 <Col>
                     <h1 className="heading dyna-font">Discover, collect, and sell extraordinary NFTs</h1>
                     <p className="paragraph pt-3 dyna-font text-muted">NFTMarket is the worlds first and <br /> largest NFT marketplace</p>
-                    <Link to="/explore" className="btn px-5 mt-3 py-2 btn-custom" >Explore</Link>
-                    <Link to="/myassets" className="btn ms-3 mt-3 px-5 py-2 btn-custom" >Mint</Link>
+                    <Link to="/nftmarketplace/explore" className="btn px-5 mt-3 py-2 btn-custom" >Explore</Link>
+                    <Link to="/nftmarketplace/myassets" className="btn ms-3 mt-3 px-5 py-2 btn-custom" >Mint</Link>
                 </Col>
                 <Col className="mt-5 text-center d-flex" style={{
                     justifyContent: 'center', alignItems: 'center'
