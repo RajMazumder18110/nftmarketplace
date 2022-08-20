@@ -31,11 +31,7 @@ const NavBar = () => {
             setWalletConnected(false)
         }
     })
-   
-    useEffect(() => {
-        
-    }, [])
-
+    
     return (
         <Container>
             <Navbar expand={'md'} dark>

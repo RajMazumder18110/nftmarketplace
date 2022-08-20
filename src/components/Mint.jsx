@@ -8,7 +8,7 @@ const Mint = () => {
         desc: '',
         price: '',
         image: '',
-        file: null
+        file: ''
     })
     const onUploadFile = (e) => {
         const reader = new FileReader()
@@ -52,7 +52,7 @@ const Mint = () => {
                         <Input
                             id="nftHeading"
                             name="title"
-                            placeholder="NFT Title"
+                            placeholder="Super nft #123"
                             type="text"
                             onChange={(e) => inputChange(e)}
                         />

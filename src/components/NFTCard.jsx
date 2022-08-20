@@ -26,7 +26,7 @@ return (
             width: mint ? '23rem' : '18rem',
             // border: '1px solid #fff'
             }} color='dark' inverse>
-            <img src={nftData ? nftData.image : null}  alt="nft" style={{
+            <img src={nftData ? nftData.image : null}  alt="nft image" style={{
                 borderTopLeftRadius: '10px',
                 borderTopRightRadius: '10px'
             }}/>
