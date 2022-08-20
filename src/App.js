@@ -10,12 +10,18 @@ const App = () => {
   const [myAssetActive, setMyAssetActive] = useState('owned');
   const [walletConnected, setWalletConnected] = useState(false);
   const [account, setAccount] = useState(null);
+  const [provider, setProvider] = useState(null);
+  const [signer, setSigner] = useState(null);
+  const [marketplace, setMarketplace] = useState(null)
 
   return (
     <MarketPlaceContext.Provider value={{
       myAssetActive, setMyAssetActive,
       walletConnected, setWalletConnected,
-      account, setAccount
+      account, setAccount,
+      provider, setProvider,
+      signer, setSigner,
+      marketplace, setMarketplace
     }}>
       <Router>
         <Navbar />

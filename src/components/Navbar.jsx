@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { ethers } from 'ethers';
 import {
     Navbar, NavbarBrand, NavbarToggler,
     Collapse, Nav, NavItem, Container, Button
@@ -13,11 +14,16 @@ const NavBar = () => {
     const toggle = () => setIsOpen(!isOpen);
 
     const { walletConnected, setWalletConnected,
-            account, setAccount } = useContext(MarketPlaceContext);
+            account, setAccount,
+            setSigner, setProvider } = useContext(MarketPlaceContext);
 
     const connectWallet = async () => {
         if(typeof window.ethereum !== 'undefined'){
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts'})
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            setSigner(signer);
+            setProvider(provider);
             setAccount(accounts[0]);
             setWalletConnected(true);
         }

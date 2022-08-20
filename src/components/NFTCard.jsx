@@ -3,10 +3,10 @@ import { Card, CardBody, CardSubtitle, CardText, CardTitle, Button } from "react
 import { MarketPlaceContext } from '../contexts'
 import { useContext } from "react";
 
-const NFTCard = ({ marketplace, inAssets, active, mint, nftData, formValidated }) => {
+const NFTCard = ({ inAssets, active, mint, nftData }) => {
     const { setMyAssetActive } = useContext(MarketPlaceContext);
-
     const navigate = useNavigate()
+
     const mintNft = () => {
         console.log(nftData)
         alert(`minted ${nftData.title}`)
@@ -29,9 +29,9 @@ const NFTCard = ({ marketplace, inAssets, active, mint, nftData, formValidated }
 return (
         <Card style={{
             width: mint ? '23rem' : '18rem',
-            // border: '1px solid #fff'
+            border: '1px solid #555'
             }} color='dark' inverse>
-            <img src={nftData ? nftData.image : null}  alt="nft image" style={{
+            <img src={nftData ? nftData.image : null}  alt="nft pic" style={{
                 borderTopLeftRadius: '10px',
                 borderTopRightRadius: '10px'
             }}/>
