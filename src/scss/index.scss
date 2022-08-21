@@ -51,3 +51,7 @@ body {
 .btn-custom:hover{
   background: none !important;
 }
+
+.btn-custom:disabled{
+  background-color: $grayColor !important;
+}

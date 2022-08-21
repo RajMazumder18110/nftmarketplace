@@ -11,7 +11,8 @@ const Mint = () => {
         title: '',
         desc: '',
         price: '',
-        image: ''
+        image: '',
+        owner: account.replace(account.substring(6,36), '-xxx-') 
     })
     const onUploadFile = (e) => {
         const reader = new FileReader()

@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import NFTCard from "../components/NFTCard";
 import { MarketPlaceContext } from '../contexts'
 import { useContext, useEffect, useState } from "react";
@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Marketplace = () => {
     const [nftDataMarketplace, setNftDataMarketplace] = useState([])
-    const { nft, nftMarketplace } = useContext(MarketPlaceContext)
+    const { nft, nftMarketplace, walletConnected } = useContext(MarketPlaceContext)
 
     const getData = async (item) => {
         const tokenURI = await nft.tokenURI(item.tokenId);
@@ -32,13 +32,14 @@ const Marketplace = () => {
                 const data = await getData(item);
                 listedItems.push({
                     ...data,
-                    itemId: item.itemId.toString()
+                    itemId: item.itemId.toString(),
+                    seller: item.seller.replace(item.seller.substring(6,36), '-xxx-')
                 })
             }
             setNftDataMarketplace(listedItems)
         }
-        fetch()
-    }, [])
+        walletConnected && fetch()
+    },[walletConnected])
     return (
         <Container>
             <h2 className="mt-5">Explore NFTs</h2>

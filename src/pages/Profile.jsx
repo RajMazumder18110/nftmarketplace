@@ -38,14 +38,16 @@ const Profile = () => {
                 ownedItems.push({
                     ...data,
                     itemId: item.itemId.toString(),
-                    tokenId: item.tokenId.toString()
+                    tokenId: item.tokenId.toString(),
+                    owner: item.owner.replace(item.owner.substring(6,36), '-xxx-')
                 })
             }
             for(let item of listed){
                 const data = await getData(item);
                 listedItems.push({
                     ...data,
-                    itemId: item.itemId.toString()
+                    itemId: item.itemId.toString(),
+                    seller: item.seller.replace(item.seller.substring(6,36), '-xxx-')
                 })
             }
             setNftDataOwned(ownedItems);
