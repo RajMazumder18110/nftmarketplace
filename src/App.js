@@ -12,7 +12,12 @@ const App = () => {
   const [account, setAccount] = useState(null);
   const [provider, setProvider] = useState(null);
   const [signer, setSigner] = useState(null);
-  const [marketplace, setMarketplace] = useState(null)
+  const [marketplace, setMarketplace] = useState(null);
+  const [nft, setNft] = useState(null);
+  const [nftMarketplace, setNftMarketplace] = useState(null);
+  const [minitng, setMinting] = useState(true);
+  const [minitngTitle, setMintingTitle] = useState('');
+  const [minitngProgress, setMintingProgress] = useState('');
 
   return (
     <MarketPlaceContext.Provider value={{
@@ -21,7 +26,12 @@ const App = () => {
       account, setAccount,
       provider, setProvider,
       signer, setSigner,
-      marketplace, setMarketplace
+      marketplace, setMarketplace,
+      nft, setNft,
+      nftMarketplace, setNftMarketplace,
+      minitng, setMinting,
+      minitngTitle, setMintingTitle,
+      minitngProgress, setMintingProgress
     }}>
       <Router>
         <Navbar />

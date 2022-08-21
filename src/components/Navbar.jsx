@@ -8,6 +8,8 @@ import {
 
 import { MarketPlaceContext } from '../contexts';
 
+import NFT from '../contracts/NFT.json';
+import NFTMarketplace from '../contracts/NFTMarketplace.json';
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,13 +17,25 @@ const NavBar = () => {
 
     const { walletConnected, setWalletConnected,
             account, setAccount,
-            setSigner, setProvider } = useContext(MarketPlaceContext);
+            setSigner, setProvider,
+            setNftMarketplace, setNft } = useContext(MarketPlaceContext);
 
     const connectWallet = async () => {
         if(typeof window.ethereum !== 'undefined'){
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts'})
             const provider = new ethers.providers.Web3Provider(window.ethereum);
+            // #########################################
+            const { chainId } = await provider.getNetwork();
+            // ########################################
             const signer = provider.getSigner();
+            const nftContract = new ethers.Contract(
+                NFT.networks[chainId.toString()].address, NFT.abi, signer
+            )
+            const nftMarketplaceContract = new ethers.Contract(
+                NFTMarketplace.networks[chainId.toString()].address, NFTMarketplace.abi, signer
+            )
+            setNft(nftContract)
+            setNftMarketplace(nftMarketplaceContract);
             setSigner(signer);
             setProvider(provider);
             setAccount(accounts[0]);
