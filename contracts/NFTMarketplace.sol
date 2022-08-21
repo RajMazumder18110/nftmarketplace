@@ -103,7 +103,9 @@ contract NFTMarketplace is ReentrancyGuard {
      * @param _itemId: The token Id which we want to check.
      */
     modifier OnlyMinter(uint256 _itemId){
-        require(_itemIdToMarketItem[_itemId].owner == msg.sender, "OnlyMinter: You are not the minter");
+        require(
+            (_itemIdToMarketItem[_itemId].owner == msg.sender) || (_itemIdToMarketItem[_itemId].seller == msg.sender),
+            "OnlyMinter: You are not the minter");
         _;
     }
 
@@ -199,7 +201,6 @@ contract NFTMarketplace is ReentrancyGuard {
     function listMarketItem(uint256 _itemId)
         external OnlyMinter(_itemId) StatusOwnedOrDelisted(_itemId) nonReentrant {
             MarketItem storage marketItem =  _itemIdToMarketItem[_itemId];
-            IERC721(marketItem.nftContract).approve(address(this), marketItem.tokenId);
             IERC721(marketItem.nftContract).transferFrom(msg.sender, address(this), marketItem.tokenId);
 
             marketItem.status = NFTStatus.Listed;
@@ -219,7 +220,6 @@ contract NFTMarketplace is ReentrancyGuard {
         marketItem.seller = payable(address(0));
         marketItem.owner = payable(msg.sender);
 
-        IERC721(marketItem.nftContract).approve(msg.sender, marketItem.tokenId);
         IERC721(marketItem.nftContract).transferFrom(address(this), msg.sender, marketItem.tokenId);
     }
 
@@ -252,7 +252,6 @@ contract NFTMarketplace is ReentrancyGuard {
         private StatusSold(_itemId) {
         
         _itemIdToMarketItem[_itemId].status = NFTStatus.Owned;
-        IERC721(_nftContract).approve(_owner, _tokenId);
         IERC721(_nftContract).transferFrom(address(this), _owner, _tokenId);
     }
 }
