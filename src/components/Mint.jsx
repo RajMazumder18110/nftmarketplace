@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { MarketPlaceContext } from "../contexts";
 import NFTCard from "./NFTCard";
@@ -72,7 +72,9 @@ const Mint = () => {
                             placeholder="Super nft #123"
                             type="text"
                             onChange={(e) => inputChange(e)}
+                            valid={nftData.title.length >= 5}
                         />
+                        <p className="text-muted">minimum 5 characters *</p>
                     </FormGroup>
                     <FormGroup>
                         <Label for='nftDesc'>Description</Label>
@@ -82,7 +84,9 @@ const Mint = () => {
                             placeholder="Description"
                             type="textarea"
                             onChange={(e) => inputChange(e)}
+                            valid={nftData.desc.length >= 5}
                         />
+                        <p className="text-muted">minimum 5 characters *</p>
                     </FormGroup>
                     <Row xs={2}>
                         <Col>
@@ -94,7 +98,9 @@ const Mint = () => {
                                     placeholder="1.0"
                                     type="number"
                                     onChange={(e) => inputChange(e)}
+                                    valid={Number(nftData.price) > 0}
                                 />
+                                <p className="text-muted">more than 0</p>
                             </FormGroup>
                         </Col>
                         <Col>
@@ -106,6 +112,7 @@ const Mint = () => {
                                     placeholder="NFT File"
                                     type="file"
                                     onChange={(e) => onUploadFile(e)}
+                                    valid={nftData.image.length >= 20}
                                 />
                             </FormGroup>
                         </Col>

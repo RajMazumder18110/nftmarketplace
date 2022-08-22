@@ -23,26 +23,29 @@ const Marketplace = () => {
     }
 
     useEffect(() => {
-        const fetch = async () => {
-            const items = await nftMarketplace.getAllMarketItems();
-            const listed = items.filter(item => item.status.toString() === '1');
-
-            const listedItems = []
-            for(let item of listed){
-                const data = await getData(item);
-                listedItems.push({
-                    ...data,
-                    itemId: item.itemId.toString(),
-                    seller: item.seller.replace(item.seller.substring(6,36), '-xxx-')
-                })
+        if(walletConnected){
+            const fetch = async () => {
+                const items = await nftMarketplace.getAllMarketItems();
+                const listed = items.filter(item => item.status.toString() === '1');
+    
+                const listedItems = []
+                for(let item of listed){
+                    const data = await getData(item);
+                    listedItems.push({
+                        ...data,
+                        itemId: item.itemId.toString(),
+                        seller: item.seller.replace(item.seller.substring(6,36), '-xxx-')
+                    })
+                }
+                setNftDataMarketplace(listedItems)
             }
-            setNftDataMarketplace(listedItems)
+            fetch();
         }
-        walletConnected && fetch()
     },[walletConnected])
     return (
         <Container>
             <h2 className="mt-5">Explore NFTs</h2>
+            {!walletConnected ? <h1 className="text-center">Connect your wallet</h1> : null}
             <Row xs='1' sm='1' md='2' lg='3' xl='3' xxl='4' style={{ cursor: 'pointer' }}>
                 {nftDataMarketplace.map((nftData, key) => (
                     <Col className="mt-4" key={key}>

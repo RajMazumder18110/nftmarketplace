@@ -22,6 +22,10 @@ const NFTCard = ({ inAssets, active, mint, nftData, marketplace }) => {
     const navigate = useNavigate()
 
     const mintNft = async () => {
+        if(!checkMintForm()){
+            alert("Please fill the form correctly")
+            return
+        }
         try{
             setMinting(false);
             setMintingTitle("Uploding file to IPFS")
@@ -75,7 +79,7 @@ const NFTCard = ({ inAssets, active, mint, nftData, marketplace }) => {
     const uploadImage = async (file) => {
         try{
             const { cid } = await ipfs.add(file, {
-                progress: (prog) => setMintingProgress(`Done ${prog/1024} MB`)
+                progress: (prog) => setMintingProgress(`Done ${prog} KB`)
             });
             return {
                 filecid: cid,
@@ -104,6 +108,18 @@ const NFTCard = ({ inAssets, active, mint, nftData, marketplace }) => {
                 status: true
             }
         }
+    }
+
+    const checkMintForm = () => {
+        if(
+            nftData.title.length >= 5 &&
+            nftData.desc.length >= 5 &&
+            Number(nftData.price) > 0 &&
+            nftData.image.length >= 20
+            ){
+            return true
+        }
+        return false;
     }
 
     const buyNft = async (itemId) => {
