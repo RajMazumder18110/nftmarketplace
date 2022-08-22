@@ -18,7 +18,7 @@ const NFTCard = ({ inAssets, active, mint, nftData, marketplace }) => {
             ).toString('base64')
         }
     })
-    const { setMyAssetActive, nft, nftMarketplace, setMinting, setMintingTitle, setMintingProgress } = useContext(MarketPlaceContext);
+    const { account, setMyAssetActive, nft, nftMarketplace, setMinting, setMintingTitle, setMintingProgress } = useContext(MarketPlaceContext);
     const navigate = useNavigate()
 
     const mintNft = async () => {
@@ -198,7 +198,7 @@ return (
                     <Button className="ms-3 mt-3 px-5 py-2 btn-custom"
                         onClick={mintNft}
                     >Mint</Button>
-                  : marketplace ?
+                  : marketplace && account.replace(account.substring(6,36), '-xxx-') !== nftData.seller.toLowerCase() ?
                     <Button className="ms-3 mt-3 px-5 py-2 btn-custom" disabled={progress}
                         onClick={() => buyNft(nftData.itemId)}
                      >Buy</Button>
