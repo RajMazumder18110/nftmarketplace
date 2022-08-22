@@ -1,18 +1,14 @@
 {
   "files": {
-    "main.css": "/nftmarketplace/static/css/main.31ba4a1c.css",
-    "main.js": "/nftmarketplace/static/js/main.f1d1e3ba.js",
-    "static/media/nft2.jpg": "/nftmarketplace/static/media/nft2.24400f00fbdef80af356.jpg",
-    "static/media/nft5.jpg": "/nftmarketplace/static/media/nft5.953467dc216deb7bb016.jpg",
-    "static/media/nft1.jpg": "/nftmarketplace/static/media/nft1.1ef2a89a095086126f8f.jpg",
+    "main.css": "/nftmarketplace/static/css/main.34032ff7.css",
+    "main.js": "/nftmarketplace/static/js/main.10fa9104.js",
     "static/media/nft3.jpg": "/nftmarketplace/static/media/nft3.7d8d7720d0a384de5364.jpg",
-    "static/media/nft4.jpg": "/nftmarketplace/static/media/nft4.aa7c998d27294797df51.jpg",
     "index.html": "/nftmarketplace/index.html",
-    "main.31ba4a1c.css.map": "/nftmarketplace/static/css/main.31ba4a1c.css.map",
-    "main.f1d1e3ba.js.map": "/nftmarketplace/static/js/main.f1d1e3ba.js.map"
+    "main.34032ff7.css.map": "/nftmarketplace/static/css/main.34032ff7.css.map",
+    "main.10fa9104.js.map": "/nftmarketplace/static/js/main.10fa9104.js.map"
   },
   "entrypoints": [
-    "static/css/main.31ba4a1c.css",
-    "static/js/main.f1d1e3ba.js"
+    "static/css/main.34032ff7.css",
+    "static/js/main.10fa9104.js"
   ]
 }
